@@ -19,7 +19,7 @@ def main():
     response = get_questions('2017-01-01', '2017-08-06', 'stackoverflow',
                          search = 'zelig', search_type = 'query')
     data = response.json()
-    print("StackExchange API v2.2 quota remaining: " + data['quota_remaining']
+    print("StackExchange API quota remaining: " + str(data['quota_remaining']))
     questions = data['items']  # list of dictionaries
     
     # save results to csv file
@@ -27,13 +27,13 @@ def main():
                   'creation_date', 'link', 'title', 'site', 'query']
 
     with open("stackexchange.csv", "w") as outfile:
-        writer = csv.DictWriter(outfile, columns)
+        writer = csv.DictWriter(outfile, fieldnames)
         writer.writeheader()
         for question in questions:
             tmp = {}
             for field in fieldnames:
-                tmp[field] = question.get(field)
-            writer.writerow([tmp])
+                tmp[field] = str(question.get(field))
+            writer.writerow(tmp)
 
 
 def get_questions(from_date, to_date, site, search, search_type = 'query'):
