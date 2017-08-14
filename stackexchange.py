@@ -5,13 +5,17 @@ import requests
 
 
 def main():
-    sites = ['stackoverflow', 'stats', 'datascience']
-    # queries = ['zelig']  # for test mode
-    queries = ['zelig', 'time series', 'survey weight', 'bayes', 'gee', 'glm',
-               'poisson', 'gamma', 'normal', 'probit', 'logit', 'ordered',
-               'relogit', 'quantile', 'tobit', 'lognorm', 'exponential',
-               'negative binomial', 'ivreg', 'hierarchical', 'multilevel',
-               'random effects', 'mixed effects', 'fixed effects']
+    # test mode
+    sites = ['stackoverflow']
+    queries = ['zelig']
+
+    # run mode
+    # sites = ['stackoverflow', 'stats', 'datascience']
+    # queries = ['zelig', 'time series', 'survey weight', 'bayes', 'gee', 'glm',
+    #            'poisson', 'gamma', 'normal', 'probit', 'logit', 'ordered',
+    #            'relogit', 'quantile', 'tobit', 'lognorm', 'exponential',
+    #            'negative binomial', 'ivreg', 'hierarchical', 'multilevel',
+    #            'random effects', 'mixed effects', 'fixed effects']
 
     # request data from stackexchange api
     questions = []
