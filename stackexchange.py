@@ -3,28 +3,22 @@
 import csv
 import requests
 
-def main():
-    host = "https://api.stackexchange.com/2.2/search"
-    subset = "?fromdate=2016-08-06&todate=2017-08-06&order=desc&sort=votes"
-    site = "stackoverflow"
-    query = "zelig"
-    tag = "r"
 
+def main():
     sites = ['stackoverflow', 'stats', 'datascience']
     queries = ['zelig', 'time series', 'survey weight', 'bayes', 'gee', 'glm',
                'poisson', 'gamma', 'normal', 'probit', 'logit', 'ordered',
                'relogit', 'quantile', 'tobit', 'lognorm', 'exponential',
                'negative binomial', 'ivreg', 'hierarchical', 'multilevel',
                'random effects', 'mixed effects', 'fixed effects']
-    tags = ['r', 'r-zelig', 'statistics']
-    
+
     # request data from stackexchange api
     questions = []
     for site in sites:
         for query in queries:
-            q = get_questions('2016-08-06', '2017-08-06', site = site,
-                              search = query + "&tagged=r", search_type = 'query',
-                              page = 1, pagesize = 100)
+            q = get_questions('2016-08-06', '2017-08-06', site=site,
+                              search=query + "&tagged=r", search_type='query',
+                              page=1, pagesize=100)
             questions = [*questions, *q]
 
     # save results to csv file
@@ -42,16 +36,16 @@ def main():
             writer.writerow(tmp)
 
 
-def get_questions(from_date, to_date, site, search, search_type = 'query',
-                  page = 1, pagesize = 100):
+def get_questions(from_date, to_date, site, search, search_type='query',
+                  page=1, pagesize=100):
     """Returns the results of an http GET request to the StackExchange API v2.2.
     Accepts dates in format YYYY-MM-DD.  Accepts search_type of 'query' to
     search question titles or 'tag' to search question tags.
     str, int -> Response object from requests library"""
     
     host = "https://api.stackexchange.com/2.2/search?"
-    options = "&pagesize=" + str(pagesize) + "&fromdate=" + from_date + "&todate=" + to_date + \
-          "&order=desc&sort=votes&site=" + site
+    options = "&pagesize=" + str(pagesize) + "&fromdate=" + from_date + \
+              "&todate=" + to_date + "&order=desc&sort=votes&site=" + site
     has_more = True 
     questions = []
 
