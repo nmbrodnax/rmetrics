@@ -31,7 +31,7 @@ def main():
                   'creation_date', 'link', 'title', 'site', 'question_id',
                   'search', 'search_type']
 
-    with open("stackexchange.csv", "w") as outfile:
+    with open("questions_by_topic.csv", "w") as outfile:
         writer = csv.DictWriter(outfile, fieldnames)
         writer.writeheader()
         for question in questions:
@@ -69,7 +69,7 @@ def get_questions(from_date, to_date, site, search, search_type='query',
         
         for dict_i in data['items']:
             dict_i['site'] = site
-            dict_i['search'] = search.split('&')[0]
+            dict_i['topic'] = search.split('&')[0]
             dict_i['search_type'] = search_type
             questions.append(dict_i)
         has_more = data['has_more']
