@@ -31,7 +31,7 @@ def main():
                   'creation_date', 'link', 'title', 'site', 'question_id',
                   'topic', 'search_type']
 
-    with open("questions_by_topic.csv", "w") as outfile:
+    with open("by_topic.csv", "w") as outfile:
         writer = csv.DictWriter(outfile, fieldnames)
         writer.writeheader()
         for question in questions:
