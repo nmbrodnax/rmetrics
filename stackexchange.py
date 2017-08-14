@@ -6,6 +6,7 @@ import requests
 
 def main():
     sites = ['stackoverflow', 'stats', 'datascience']
+    # queries = ['zelig']  # for test mode
     queries = ['zelig', 'time series', 'survey weight', 'bayes', 'gee', 'glm',
                'poisson', 'gamma', 'normal', 'probit', 'logit', 'ordered',
                'relogit', 'quantile', 'tobit', 'lognorm', 'exponential',
@@ -64,7 +65,7 @@ def get_questions(from_date, to_date, site, search, search_type='query',
         
         for dict_i in data['items']:
             dict_i['site'] = site
-            dict_i['search'] = search
+            dict_i['search'] = search.split('&')[0]
             dict_i['search_type'] = search_type
             questions.append(dict_i)
         has_more = data['has_more']
