@@ -29,8 +29,8 @@ def main():
 
     # save results to csv file
     fieldnames = ['tags', 'view_count', 'answer_count', 'last_activity_date',
-                  'creation_date', 'link', 'title', 'site', 'search',
-                  'search_type']
+                  'creation_date', 'link', 'title', 'site', 'question_id',
+                  'search', 'search_type']
 
     with open("stackexchange.csv", "w") as outfile:
         writer = csv.DictWriter(outfile, fieldnames)
