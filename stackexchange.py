@@ -11,8 +11,11 @@ def main():
     tag = "r"
 
     sites = ['stackoverflow', 'stats', 'datascience']
-    queries = ['zelig', 'weights', 'bootstrap', 'hierarchical', 'multilevel',
-               'time series', 'database']
+    queries = ['zelig', 'time series', 'survey weight', 'bayes', 'gee', 'glm',
+               'poisson', 'gamma', 'normal', 'probit', 'logit', 'ordered',
+               'relogit', 'quantile', 'tobit', 'lognorm', 'exponential',
+               'negative binomial', 'ivreg', 'hierarchical', 'multilevel',
+               'random effects', 'mixed effects', 'fixed effects']
     tags = ['r', 'r-zelig', 'statistics']
     
     # request data from stackexchange api
